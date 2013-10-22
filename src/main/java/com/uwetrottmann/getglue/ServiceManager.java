@@ -15,6 +15,7 @@
  */
 package com.uwetrottmann.getglue;
 
+import com.uwetrottmann.getglue.services.InteractionService;
 import com.uwetrottmann.getglue.services.ObjectService;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
@@ -85,6 +86,11 @@ public class ServiceManager {
 
     public ObjectService objectService() {
         ObjectService service = buildRestAdapter().create(ObjectService.class);
+        return service;
+    }
+
+    public InteractionService interactionService() {
+        InteractionService service = buildRestAdapter().create(InteractionService.class);
         return service;
     }
 }
