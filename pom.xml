@@ -14,6 +14,10 @@
     <url>https://github.com/UweTrottmann/getglue-java</url>
     <inceptionYear>2013</inceptionYear>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.squareup.retrofit</groupId>
