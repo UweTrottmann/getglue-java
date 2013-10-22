@@ -60,7 +60,7 @@ public class ServiceManager {
                 .setClientSecret(clientSecret)
                 .setRedirectURI(redirectUri)
                 .setCode(authCode)
-                .buildBodyMessage();
+                .buildQueryMessage();
         return request;
     }
 
