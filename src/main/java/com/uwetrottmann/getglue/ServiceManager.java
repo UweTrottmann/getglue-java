@@ -20,6 +20,7 @@ import com.uwetrottmann.getglue.services.ObjectService;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
+import org.apache.oltu.oauth2.common.message.types.ResponseType;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
@@ -42,6 +43,8 @@ public class ServiceManager {
     public OAuthClientRequest getAuthorizationRequest(String clientId, String redirectUri) throws OAuthSystemException {
         OAuthClientRequest request = OAuthClientRequest
                 .authorizationLocation(OAUTH2_AUTHORIZATION_URL)
+                .setScope("public read write")
+                .setResponseType(ResponseType.CODE.toString())
                 .setClientId(clientId)
                 .setRedirectURI(redirectUri)
                 .buildQueryMessage();
