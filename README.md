@@ -8,7 +8,7 @@ A Java wrapper around the [v3 API of GetGlue][1] using retrofit.
 License
 =======
 
-    Copyright 2012 Jake Wharton
+    Copyright 2013 Uwe Trottmann
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
