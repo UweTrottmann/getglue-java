@@ -14,9 +14,9 @@ import java.io.InputStreamReader;
 
 public abstract class BaseTestCase extends TestCase {
 
-    private static final String CLIENT_ID = "8D195792E4A18575EE0D50CE42A11F";
-    private static final String CLIENT_SECRET = "68BA81EC69ED72D8DF0D3C705EC40B";
-    private static final String TEMPORARY_ACCESS_TOKEN = "!-- FILL IN ACCESS TOKEN --!";
+    private static final String CLIENT_ID = "7FD930E5C9D030F696ACA631343EB3";
+    private static final String CLIENT_SECRET = "EB4B93F673B95A5A2460CF983BB0A4";
+    private static final String TEMPORARY_ACCESS_TOKEN = "FA1429A2D4B3FA39EF57E15689A6B4";  /* Expires Dec. 21, 2013, 8:35 a.m. */
     private static final String REDIRECT_URI = "http://localhost";
     private final ServiceManager mManager = new ServiceManager();
 
