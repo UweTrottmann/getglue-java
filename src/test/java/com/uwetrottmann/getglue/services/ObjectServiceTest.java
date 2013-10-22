@@ -17,4 +17,16 @@ public class ObjectServiceTest extends BaseTestCase {
         assertThat(resource.object.title).isEqualTo("Glee");
     }
 
+    public void test_checkinObject() {
+        ObjectService service = getManager().objectService();
+        GetGlueResource resource = service.checkinObject("tv_shows/glee");
+        assertThat(resource).isNotNull();
+    }
+
+    public void test_checkinObjectComment() {
+        ObjectService service = getManager().objectService();
+        GetGlueResource resource = service.checkinObject("tv_shows/glee", "Testing getglue-java.");
+        assertThat(resource).isNotNull();
+    }
+
 }
