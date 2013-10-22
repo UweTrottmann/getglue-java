@@ -15,29 +15,26 @@
  */
 package com.uwetrottmann.getglue.services;
 
-import com.uwetrottmann.getglue.entities.GetGlueResource;
-import retrofit.http.EncodedPath;
-import retrofit.http.GET;
-import retrofit.http.POST;
-import retrofit.http.Query;
+import com.uwetrottmann.getglue.entities.GetGlueObjectResource;
+import retrofit.http.*;
 
 /**
- * Endpoints for <a href="http://developer.getglue.com/#object-resources">Object</a>.
+ * Endpoints for <a href="http://developer.getglue.com/#object-resources">Object Resources</a>.
  */
 public interface ObjectService {
 
     @GET("/{object-id}")
-    GetGlueResource getObject(
+    GetGlueObjectResource getObject(
             @EncodedPath("object-id") String objectId
     );
 
     @POST("/{object-id}/checkins")
-    GetGlueResource checkinObject(
+    GetGlueObjectResource checkinObject(
             @EncodedPath("object-id") String objectId
     );
 
     @POST("/{object-id}/checkins")
-    GetGlueResource checkinObject(
+    GetGlueObjectResource checkinObject(
             @EncodedPath("object-id") String objectId,
             @Query("comment") String comment
     );

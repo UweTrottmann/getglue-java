@@ -15,7 +15,7 @@
  */
 package com.uwetrottmann.getglue.entities;
 
-public class GetGlueResource {
+public class GetGlueObjectResource {
 
     public GetGlueObject object;
 
