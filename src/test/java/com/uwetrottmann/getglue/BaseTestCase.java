@@ -1,16 +1,10 @@
 package com.uwetrottmann.getglue;
 
 import junit.framework.TestCase;
-import org.apache.oltu.oauth2.client.OAuthClient;
-import org.apache.oltu.oauth2.client.URLConnectionClient;
-import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
-import org.apache.oltu.oauth2.client.response.OAuthJSONAccessTokenResponse;
 import org.apache.oltu.oauth2.common.exception.OAuthProblemException;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public abstract class BaseTestCase extends TestCase {
 
@@ -23,7 +17,6 @@ public abstract class BaseTestCase extends TestCase {
     @Override
     protected void setUp() throws OAuthSystemException, IOException, OAuthProblemException {
         getManager().setIsDebug(true);
-
         getManager().setAccessToken(TEMPORARY_ACCESS_TOKEN);
     }
 
