@@ -15,10 +15,15 @@
  */
 package com.uwetrottmann.getglue;
 
+import com.uwetrottmann.getglue.client.GetGlueHttpClient;
 import com.uwetrottmann.getglue.services.InteractionService;
 import com.uwetrottmann.getglue.services.ObjectService;
 import com.uwetrottmann.getglue.services.SearchService;
+import org.apache.oltu.oauth2.client.OAuthClient;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
+import org.apache.oltu.oauth2.client.response.OAuthAccessTokenResponse;
+import org.apache.oltu.oauth2.client.response.OAuthJSONAccessTokenResponse;
+import org.apache.oltu.oauth2.common.exception.OAuthProblemException;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 import org.apache.oltu.oauth2.common.message.types.ResponseType;
@@ -37,11 +42,6 @@ public class GetGlue {
     public GetGlue() {
     }
 
-    public GetGlue setIsDebug(boolean isDebug) {
-        mIsDebug = isDebug;
-        return this;
-    }
-
     public static OAuthClientRequest getAuthorizationRequest(String clientId, String redirectUri) throws OAuthSystemException {
         OAuthClientRequest request = OAuthClientRequest
                 .authorizationLocation(OAUTH2_AUTHORIZATION_URL)
@@ -54,7 +54,7 @@ public class GetGlue {
     }
 
     public static OAuthClientRequest getAccessTokenRequest(String clientId, String clientSecret, String redirectUri,
-                                                    String authCode) throws OAuthSystemException {
+                                                           String authCode) throws OAuthSystemException {
         OAuthClientRequest request = OAuthClientRequest
                 .tokenLocation(OAUTH2_ACCESS_TOKEN_URL)
                 .setGrantType(GrantType.AUTHORIZATION_CODE)
@@ -64,6 +64,28 @@ public class GetGlue {
                 .setCode(authCode)
                 .buildQueryMessage();
         return request;
+    }
+
+    /**
+     * Builds a request and executes it, then returns the response which includes the tokens.
+     */
+    public static OAuthAccessTokenResponse getAccessTokenResponse(String clientId,
+                                                                  String clientSecret,
+                                                                  String redirectUri,
+                                                                  String authCode)
+            throws OAuthSystemException, OAuthProblemException {
+        OAuthClientRequest request = getAccessTokenRequest(clientId,
+                clientSecret, redirectUri, authCode);
+
+        // create HTTP client which is able to follow protocol redirects
+        OAuthClient client = new OAuthClient(new GetGlueHttpClient());
+        OAuthJSONAccessTokenResponse response = client.accessToken(request);
+        return response;
+    }
+
+    public GetGlue setIsDebug(boolean isDebug) {
+        mIsDebug = isDebug;
+        return this;
     }
 
     public void setAccessToken(String token) {
