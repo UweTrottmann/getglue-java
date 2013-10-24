@@ -33,10 +33,11 @@ public interface ObjectService {
             @EncodedPath("object-id") String objectId
     );
 
+    @FormUrlEncoded
     @POST("/{object-id}/checkins")
     GetGlueObjectResource checkinObject(
             @EncodedPath("object-id") String objectId,
-            @Query("comment") String comment
+            @Field("comment") String comment
     );
 
 }
