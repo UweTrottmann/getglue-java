@@ -1,6 +1,7 @@
 package com.uwetrottmann.getglue.services;
 
 import com.uwetrottmann.getglue.BaseTestCase;
+import com.uwetrottmann.getglue.entities.GetGlueCheckIn;
 import com.uwetrottmann.getglue.entities.GetGlueObjectResource;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -19,14 +20,16 @@ public class ObjectServiceTest extends BaseTestCase {
 
     public void test_checkinObject() {
         ObjectService service = getManager().objectService();
-        GetGlueObjectResource resource = service.checkinObject("tv_shows/glee");
+        GetGlueCheckIn resource = service.checkinObject("tv_shows/glee");
         assertThat(resource).isNotNull();
+        assertThat(resource.id).isNotEmpty();
     }
 
     public void test_checkinObjectComment() {
         ObjectService service = getManager().objectService();
-        GetGlueObjectResource resource = service.checkinObject("tv_shows/how_i_met_your_mother", "Testing getglue-java.");
+        GetGlueCheckIn resource = service.checkinObject("tv_shows/how_i_met_your_mother", "Testing getglue-java.");
         assertThat(resource).isNotNull();
+        assertThat(resource.id).isNotEmpty();
     }
 
 }

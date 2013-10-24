@@ -15,6 +15,7 @@
  */
 package com.uwetrottmann.getglue.services;
 
+import com.uwetrottmann.getglue.entities.GetGlueCheckIn;
 import com.uwetrottmann.getglue.entities.GetGlueObjectResource;
 import retrofit.http.*;
 
@@ -29,13 +30,13 @@ public interface ObjectService {
     );
 
     @POST("/{object-id}/checkins")
-    GetGlueObjectResource checkinObject(
+    GetGlueCheckIn checkinObject(
             @EncodedPath("object-id") String objectId
     );
 
     @FormUrlEncoded
     @POST("/{object-id}/checkins")
-    GetGlueObjectResource checkinObject(
+    GetGlueCheckIn checkinObject(
             @EncodedPath("object-id") String objectId,
             @Field("comment") String comment
     );
