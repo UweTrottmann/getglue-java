@@ -25,7 +25,7 @@ import org.apache.oltu.oauth2.common.message.types.ResponseType;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
-public class ServiceManager {
+public class GetGlue {
 
     private static final String API_URL = "https://api.getglue.com/v3";
     private static final String API_V4_URL = "http://api.getglue.com/v4";
@@ -34,10 +34,10 @@ public class ServiceManager {
     private boolean mIsDebug;
     private String mAccessToken;
 
-    public ServiceManager() {
+    public GetGlue() {
     }
 
-    public ServiceManager setIsDebug(boolean isDebug) {
+    public GetGlue setIsDebug(boolean isDebug) {
         mIsDebug = isDebug;
         return this;
     }

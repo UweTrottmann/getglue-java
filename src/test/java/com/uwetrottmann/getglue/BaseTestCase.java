@@ -12,7 +12,7 @@ public abstract class BaseTestCase extends TestCase {
     protected static final String CLIENT_SECRET = "EB4B93F673B95A5A2460CF983BB0A4";
     private static final String TEMPORARY_ACCESS_TOKEN = "FA1429A2D4B3FA39EF57E15689A6B4";  /* Expires Dec. 21, 2013, 8:35 a.m. */
     protected static final String REDIRECT_URI = "http://localhost";
-    private final ServiceManager mManager = new ServiceManager();
+    private final GetGlue mManager = new GetGlue();
 
     @Override
     protected void setUp() throws OAuthSystemException, IOException, OAuthProblemException {
@@ -20,7 +20,7 @@ public abstract class BaseTestCase extends TestCase {
         getManager().setAccessToken(TEMPORARY_ACCESS_TOKEN);
     }
 
-    protected final ServiceManager getManager() {
+    protected final GetGlue getManager() {
         return mManager;
     }
 }
