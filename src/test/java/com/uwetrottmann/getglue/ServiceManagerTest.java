@@ -8,7 +8,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 public class ServiceManagerTest extends BaseTestCase {
 
     public void test_getAuthorizationRequest() throws OAuthSystemException {
-        OAuthClientRequest request = getManager().getAuthorizationRequest(CLIENT_ID, REDIRECT_URI);
+        OAuthClientRequest request = ServiceManager.getAuthorizationRequest(CLIENT_ID, REDIRECT_URI);
         assertThat(request.getLocationUri())
                 .isEqualTo("https://api.getglue.com/oauth2/authorize"
                         + "?response_type=code&scope=public+read+write"
@@ -18,7 +18,7 @@ public class ServiceManagerTest extends BaseTestCase {
 
     public void test_getAccessTokenRequest() throws OAuthSystemException {
         String code = "S0meRand0mS1uff";
-        OAuthClientRequest request = getManager()
+        OAuthClientRequest request = ServiceManager
                 .getAccessTokenRequest(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, code);
         assertThat(request.getLocationUri())
                 .isEqualTo("https://api.getglue.com/oauth2/access_token"

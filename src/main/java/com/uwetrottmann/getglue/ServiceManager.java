@@ -42,7 +42,7 @@ public class ServiceManager {
         return this;
     }
 
-    public OAuthClientRequest getAuthorizationRequest(String clientId, String redirectUri) throws OAuthSystemException {
+    public static OAuthClientRequest getAuthorizationRequest(String clientId, String redirectUri) throws OAuthSystemException {
         OAuthClientRequest request = OAuthClientRequest
                 .authorizationLocation(OAUTH2_AUTHORIZATION_URL)
                 .setScope("public read write")
@@ -53,7 +53,7 @@ public class ServiceManager {
         return request;
     }
 
-    public OAuthClientRequest getAccessTokenRequest(String clientId, String clientSecret, String redirectUri,
+    public static OAuthClientRequest getAccessTokenRequest(String clientId, String clientSecret, String redirectUri,
                                                     String authCode) throws OAuthSystemException {
         OAuthClientRequest request = OAuthClientRequest
                 .tokenLocation(OAUTH2_ACCESS_TOKEN_URL)
