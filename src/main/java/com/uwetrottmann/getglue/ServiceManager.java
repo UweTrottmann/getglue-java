@@ -17,6 +17,7 @@ package com.uwetrottmann.getglue;
 
 import com.uwetrottmann.getglue.services.InteractionService;
 import com.uwetrottmann.getglue.services.ObjectService;
+import com.uwetrottmann.getglue.services.SearchService;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
@@ -27,6 +28,7 @@ import retrofit.RestAdapter;
 public class ServiceManager {
 
     private static final String API_URL = "https://api.getglue.com/v3";
+    private static final String API_V4_URL = "http://api.getglue.com/v4";
     private static final String OAUTH2_AUTHORIZATION_URL = "https://api.getglue.com/oauth2/authorize";
     private static final String OAUTH2_ACCESS_TOKEN_URL = "https://api.getglue.com/oauth2/access_token";
     private boolean mIsDebug;
@@ -87,6 +89,17 @@ public class ServiceManager {
         return builder.build();
     }
 
+    private RestAdapter buildRestAdapterApiFour() {
+        RestAdapter.Builder builder = new RestAdapter.Builder()
+                .setServer(API_V4_URL);
+
+        if (mIsDebug) {
+            builder.setLogLevel(RestAdapter.LogLevel.FULL);
+        }
+
+        return builder.build();
+    }
+
     public ObjectService objectService() {
         ObjectService service = buildRestAdapter().create(ObjectService.class);
         return service;
@@ -94,6 +107,11 @@ public class ServiceManager {
 
     public InteractionService interactionService() {
         InteractionService service = buildRestAdapter().create(InteractionService.class);
+        return service;
+    }
+
+    public SearchService searchService() {
+        SearchService service = buildRestAdapterApiFour().create(SearchService.class);
         return service;
     }
 }
