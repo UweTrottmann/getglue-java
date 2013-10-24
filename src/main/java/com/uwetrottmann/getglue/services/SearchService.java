@@ -10,7 +10,12 @@ import retrofit.http.Query;
 public interface SearchService {
 
     @GET("/search/objects")
-    GetGlueObjects search(
+    GetGlueObjects searchAnyObject(
+            @Query("q") String query
+    );
+
+    @GET("/search/objects?category=tv_shows")
+    GetGlueObjects searchTvShow(
             @Query("q") String query
     );
 
