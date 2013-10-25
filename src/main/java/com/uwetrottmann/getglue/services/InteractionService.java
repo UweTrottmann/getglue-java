@@ -15,17 +15,43 @@
  */
 package com.uwetrottmann.getglue.services;
 
+import com.uwetrottmann.getglue.entities.GetGlueInteraction;
 import com.uwetrottmann.getglue.entities.GetGlueInteractionResource;
+
+import java.util.List;
+
 import retrofit.http.EncodedPath;
 import retrofit.http.GET;
 
 /**
- * Endpoints for <a href="http://developer.getglue.com/#interaction-resources">Interaction Resources</a>.
+ * Endpoints for <a href="http://developer.getglue.com/#interaction-resources">Interaction
+ * Resources</a>.
  */
 public interface InteractionService {
 
+    /**
+     * Retrieves the specified interaction. Returns an Interaction resource.
+     */
     @GET("/{interaction-id}")
-    GetGlueInteractionResource getInteraction(
+    GetGlueInteractionResource get(
+            @EncodedPath("interaction-id") String interactionId
+    );
+
+    /**
+     * Retrieves the collection of vote interactions attached to the specified parent interaction.
+     * Returns an array of Interaction resources.
+     */
+    @GET("/{interaction-id}/votes")
+    List<GetGlueInteraction> votes(
+            @EncodedPath("interaction-id") String interactionId
+    );
+
+    /**
+     * Retrieves the collection of reply interactions attached to the specified parent interaction.
+     * Returns an array of Interaction resources.
+     */
+    @GET("/{interaction-id}/replies")
+    List<GetGlueInteraction> replies(
             @EncodedPath("interaction-id") String interactionId
     );
 
