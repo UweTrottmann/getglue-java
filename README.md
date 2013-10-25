@@ -3,7 +3,63 @@ getglue-java
 
 A Java wrapper around the [v3 API of GetGlue][1] using retrofit.
 
-*This is a work in progress, many endpoints are still missing. Also the v3 API is currently in beta.*
+Usage
+=====
+
+Dependencies
+------------
+
+The library has some dependencies, add these as you see fit. For example in a gradle.build file:
+```
+compile 'com.squareup.okhttp:okhttp:1.2.1'
+compile 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:0.31'
+compile 'com.squareup.retrofit:retrofit:1.2.2'
+```
+
+Calling an endpoint
+-------------------
+Once you have an access token you can make API calls by using the respective service:
+```
+GetGlue getglue = new GetGlue();
+getglue.setAccessToken(<access-token>);
+getglue.objectService().checkin("tv_shows/glee", "This is going to be hilarious.");
+```
+
+Authorization via OAuth
+-----------------------
+GetGlue uses OAuth 2.0 to authenticate the apps that use their API.
+First, register your app at the [GetGlue OAuth portal][2] to obtain an OAuth client id and client secret.
+Before using the API the user has to authorize your app so you can get a valid access token.
+```
+OAuthClientRequest request = GetGlue.getAuthorizationRequest(OAUTH_CLIENT_ID, OAUTH_CALLBACK_URL);
+
+// Load authUrl in a web browser, so the user can sign in and authorize your app.
+// GetGlue will then redirect to OAUTH_CALLBACK_URL once finished.
+String authUrl = request.getLocationUri();
+
+// Intercept the OAUTH_CALLBACK_URL and extract the auth code from the query parameter,
+// e.g. http://mycallbackurl.com&code=<auth code>
+```
+
+This auth code can be used once to exchange it for an OAuth access and refresh token.
+```
+OAuthAccessTokenResponse response = GetGlue.getAccessTokenResponse(
+                        OAUTH_CLIENT_ID,
+                        OAUTH_CLIENT_SECRET,
+                        OAUTH_CALLBACK_URL,
+                        <auth code>
+                );
+
+// store access and refresh token, as well as expiration date of access token
+long expiresIn = response.getExpiresIn(); // in seconds
+String accessToken = response.getAccessToken(); // use with GetGlue.setAccessToken()
+String refreshToken = response.getRefreshToken();
+```
+
+Once the access token is expired, you can try getting a new one by sending the refresh token instead
+of an auth code when using `GetGlue.getAccessTokenResponse()`.
+
+This can fail, in which case you have to ask the user to authenticate again (see above).
 
 License
 =======
@@ -25,3 +81,4 @@ License
 
 
  [1]: http://developer.getglue.com
+ [2]: https://api.getglue.com/oauth2/

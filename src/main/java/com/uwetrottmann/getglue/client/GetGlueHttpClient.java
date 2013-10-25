@@ -17,6 +17,7 @@
 package com.uwetrottmann.getglue.client;
 
 import com.squareup.okhttp.OkHttpClient;
+
 import org.apache.oltu.oauth2.client.HttpClient;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.client.response.OAuthClientResponse;
@@ -34,17 +35,14 @@ import java.net.URL;
 import java.util.Map;
 
 /**
- * Using a custom {@link org.apache.oltu.oauth2.client.HttpClient} implementation which
- * can follow protocol redirects, as GetGlue redirects from https to http once
- * the grant code was accepted.
+ * Using a custom {@link org.apache.oltu.oauth2.client.HttpClient} implementation which can follow
+ * protocol redirects, as GetGlue redirects from https to http once the grant code was accepted.
  */
 public class GetGlueHttpClient implements HttpClient {
 
     @Override
     public <T extends OAuthClientResponse> T execute(OAuthClientRequest request,
-                                                     Map<String, String> headers,
-                                                     String requestMethod,
-                                                     Class<T> responseClass)
+            Map<String, String> headers, String requestMethod, Class<T> responseClass)
             throws OAuthSystemException, OAuthProblemException {
         String responseBody = null;
         HttpURLConnection connection = null;
@@ -53,8 +51,8 @@ public class GetGlueHttpClient implements HttpClient {
         try {
             OkHttpClient client = new OkHttpClient();
             connection = client.open(new URL(request.getLocationUri()));
-            connection.setReadTimeout(10000 /* milliseconds */);
-            connection.setConnectTimeout(15000 /* milliseconds */);
+            connection.setConnectTimeout(15 * 1000 /* milliseconds */);
+            connection.setReadTimeout(20 * 1000 /* milliseconds */);
 
             responseCode = -1;
 
