@@ -19,7 +19,7 @@ public class SearchServiceTest extends BaseTestCase {
 
     public void test_searchTvShow() {
         SearchService service = getManager().searchService();
-        GetGlueObjects resource = service.searchTvShow("How I Met Your Mother");
+        GetGlueObjects resource = service.searchTvShows("How I Met Your Mother");
         assertThat(resource).isNotNull();
         assertThat(resource.objects).isNotNull();
         assertThat(resource.objects.get(0)).isNotNull();

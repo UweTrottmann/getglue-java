@@ -1,6 +1,8 @@
 package com.uwetrottmann.getglue.services;
 
 import com.uwetrottmann.getglue.entities.GetGlueObjects;
+import com.uwetrottmann.getglue.enumerations.GetGlueObjectType;
+
 import retrofit.http.GET;
 import retrofit.http.Query;
 
@@ -14,8 +16,23 @@ public interface SearchService {
             @Query("q") String query
     );
 
-    @GET("/search/objects?category=tv_shows")
-    GetGlueObjects searchTvShow(
+    @GET("/search/objects?category=" + GetGlueObjectType.TV_SHOWS)
+    GetGlueObjects searchTvShows(
+            @Query("q") String query
+    );
+
+    @GET("/search/objects?category=" + GetGlueObjectType.MOVIES)
+    GetGlueObjects searchMovies(
+            @Query("q") String query
+    );
+
+    @GET("/search/objects?category=" + GetGlueObjectType.SPORTS)
+    GetGlueObjects searchSports(
+            @Query("q") String query
+    );
+
+    @GET("/search/objects?category=" + GetGlueObjectType.GAMES)
+    GetGlueObjects searchGames(
             @Query("q") String query
     );
 
