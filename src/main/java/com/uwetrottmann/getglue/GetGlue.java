@@ -19,6 +19,7 @@ import com.uwetrottmann.getglue.client.GetGlueHttpClient;
 import com.uwetrottmann.getglue.services.InteractionService;
 import com.uwetrottmann.getglue.services.ObjectService;
 import com.uwetrottmann.getglue.services.SearchService;
+
 import org.apache.oltu.oauth2.client.OAuthClient;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.client.response.OAuthAccessTokenResponse;
@@ -27,22 +28,31 @@ import org.apache.oltu.oauth2.common.exception.OAuthProblemException;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 import org.apache.oltu.oauth2.common.message.types.ResponseType;
+
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
 public class GetGlue {
 
     private static final String API_URL = "https://api.getglue.com/v3";
+
     private static final String API_V4_URL = "http://api.getglue.com/v4";
-    private static final String OAUTH2_AUTHORIZATION_URL = "https://api.getglue.com/oauth2/authorize";
-    private static final String OAUTH2_ACCESS_TOKEN_URL = "https://api.getglue.com/oauth2/access_token";
+
+    private static final String OAUTH2_AUTHORIZATION_URL
+            = "https://api.getglue.com/oauth2/authorize";
+
+    private static final String OAUTH2_ACCESS_TOKEN_URL
+            = "https://api.getglue.com/oauth2/access_token";
+
     private boolean mIsDebug;
+
     private String mAccessToken;
 
     public GetGlue() {
     }
 
-    public static OAuthClientRequest getAuthorizationRequest(String clientId, String redirectUri) throws OAuthSystemException {
+    public static OAuthClientRequest getAuthorizationRequest(String clientId, String redirectUri)
+            throws OAuthSystemException {
         OAuthClientRequest request = OAuthClientRequest
                 .authorizationLocation(OAUTH2_AUTHORIZATION_URL)
                 .setScope("public read write")
@@ -53,8 +63,8 @@ public class GetGlue {
         return request;
     }
 
-    public static OAuthClientRequest getAccessTokenRequest(String clientId, String clientSecret, String redirectUri,
-                                                           String authCode) throws OAuthSystemException {
+    public static OAuthClientRequest getAccessTokenRequest(String clientId, String clientSecret,
+            String redirectUri, String authCode) throws OAuthSystemException {
         OAuthClientRequest request = OAuthClientRequest
                 .tokenLocation(OAUTH2_ACCESS_TOKEN_URL)
                 .setGrantType(GrantType.AUTHORIZATION_CODE)
@@ -70,9 +80,7 @@ public class GetGlue {
      * Builds a request and executes it, then returns the response which includes the tokens.
      */
     public static OAuthAccessTokenResponse getAccessTokenResponse(String clientId,
-                                                                  String clientSecret,
-                                                                  String redirectUri,
-                                                                  String authCode)
+            String clientSecret, String redirectUri, String authCode)
             throws OAuthSystemException, OAuthProblemException {
         OAuthClientRequest request = getAccessTokenRequest(clientId,
                 clientSecret, redirectUri, authCode);
