@@ -51,8 +51,8 @@ public class GetGlueHttpClient implements HttpClient {
         try {
             OkHttpClient client = new OkHttpClient();
             connection = client.open(new URL(request.getLocationUri()));
-            connection.setReadTimeout(10000 /* milliseconds */);
-            connection.setConnectTimeout(15000 /* milliseconds */);
+            connection.setConnectTimeout(15 * 1000 /* milliseconds */);
+            connection.setReadTimeout(20 * 1000 /* milliseconds */);
 
             responseCode = -1;
 
