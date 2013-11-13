@@ -34,7 +34,7 @@ import retrofit.RestAdapter;
 
 public class GetGlue {
 
-    private static final String API_URL = "https://api.getglue.com/v3";
+    private static final String API_URL = "http://api.getglue.com/v3";
 
     private static final String API_V4_URL = "http://api.getglue.com/v4";
 
