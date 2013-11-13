@@ -9,6 +9,7 @@ public class GetGlueTest extends BaseTestCase {
 
     public void test_getAuthorizationRequest() throws OAuthSystemException {
         OAuthClientRequest request = GetGlue.getAuthorizationRequest(CLIENT_ID, REDIRECT_URI);
+        System.out.println("GetGlue Authorization URL: " + request.getLocationUri());
         assertThat(request.getLocationUri())
                 .isEqualTo("https://api.getglue.com/oauth2/authorize"
                         + "?response_type=code&scope=public+read+write"
@@ -20,6 +21,7 @@ public class GetGlueTest extends BaseTestCase {
         String code = "S0meRand0mS1uff";
         OAuthClientRequest request = GetGlue
                 .getAccessTokenRequest(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, code);
+        System.out.println("GetGlue Access Token URL: " + request.getLocationUri());
         assertThat(request.getLocationUri())
                 .isEqualTo("https://api.getglue.com/oauth2/access_token"
                         + "?client_secret=" + CLIENT_SECRET
