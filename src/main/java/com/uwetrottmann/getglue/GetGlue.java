@@ -39,10 +39,10 @@ public class GetGlue {
     private static final String API_V4_URL = "http://api.getglue.com/v4";
 
     private static final String OAUTH2_AUTHORIZATION_URL
-            = "http://api.getglue.com/oauth2/authorize";
+            = "https://api.getglue.com/oauth2/authorize";
 
     private static final String OAUTH2_ACCESS_TOKEN_URL
-            = "http://api.getglue.com/oauth2/access_token";
+            = "https://api.getglue.com/oauth2/access_token";
 
     private boolean mIsDebug;
 
