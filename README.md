@@ -9,20 +9,44 @@ Usage
 Dependencies
 ------------
 
-The library has some dependencies, add these as you see fit. For example in a gradle.build file:
+The library has some dependencies, add these as you see fit. For example for Gradle:
 ```
-compile 'com.squareup.okhttp:okhttp:1.2.1'
 compile 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:0.31'
 compile 'com.squareup.retrofit:retrofit:1.2.2'
+compile 'com.squareup.okhttp:okhttp:1.2.1' // optional, but recommended
+```
+
+Or for Maven:
+```
+<dependency>
+    <groupId>org.apache.oltu.oauth2</groupId>
+    <artifactId>org.apache.oltu.oauth2.client</artifactId>
+    <version>0.31</version>
+</dependency>
+<dependency>
+  <groupId>com.squareup.retrofit</groupId>
+  <artifactId>retrofit</artifactId>
+  <version>1.3.0</version>
+</dependency>
+<!-- optional, but recommended: -->
+<dependency>
+  <groupId>com.squareup.okhttp</groupId>
+  <artifactId>okhttp</artifactId>
+  <version>1.2.1</version>
+</dependency>
 ```
 
 Calling an endpoint
 -------------------
 Once you have an access token you can make API calls by using the respective service:
 ```
+// You can keep these around
 GetGlue getglue = new GetGlue();
 getglue.setAccessToken(<access-token>);
-getglue.objectService().checkin("tv_shows/glee", "This is going to be hilarious.");
+ObjectService service = getglue.objectService();
+
+// Call any of the available endpoints
+service.checkin("tv_shows/glee", "This is going to be hilarious.");
 ```
 
 Authorization via OAuth
