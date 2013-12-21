@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.2.0 *(2013-12-21)*
+--------------------------------
+
+ * Use a private SSL context for OkHttp. Fixes potential crashes in libssl with other libraries (e.g. Google Analytics) not expecting modifications of the global SSL context.
+ * Update to retrofit 1.3.0.
+
 Version 1.1.0 *(2013-10-25)*
 --------------------------------
 
