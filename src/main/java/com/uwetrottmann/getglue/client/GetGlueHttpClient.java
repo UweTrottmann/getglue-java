@@ -32,7 +32,10 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.GeneralSecurityException;
 import java.util.Map;
+
+import javax.net.ssl.SSLContext;
 
 /**
  * Using a custom {@link org.apache.oltu.oauth2.client.HttpClient} implementation which can follow
@@ -49,7 +52,7 @@ public class GetGlueHttpClient implements HttpClient {
         int responseCode = 0;
 
         try {
-            OkHttpClient client = new OkHttpClient();
+            OkHttpClient client = createOkHttpClient();
             connection = client.open(new URL(request.getLocationUri()));
             connection.setConnectTimeout(15 * 1000 /* milliseconds */);
             connection.setReadTimeout(20 * 1000 /* milliseconds */);
@@ -109,5 +112,25 @@ public class GetGlueHttpClient implements HttpClient {
     @Override
     public void shutdown() {
 
+    }
+
+    /**
+     * Create an OkHttpClient with its own private SSL context. Avoids libssl crash because other
+     * libraries do not expect the global SSL context to be changed. Also see
+     * https://github.com/square/okhttp/issues/184.
+     */
+    private static OkHttpClient createOkHttpClient() {
+        OkHttpClient okHttpClient = new OkHttpClient();
+
+        SSLContext sslContext;
+        try {
+            sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, null, null);
+        } catch (GeneralSecurityException e) {
+            throw new AssertionError(); // The system has no TLS. Just give up.
+        }
+        okHttpClient.setSslSocketFactory(sslContext.getSocketFactory());
+
+        return okHttpClient;
     }
 }
