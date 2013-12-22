@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.2.1 *(2013-12-22)*
+--------------------------------
+
+ * Also use a private SSL context with retrofit (by setting a custom OkHttp client).
+
 Version 1.2.0 *(2013-12-21)*
 --------------------------------
 
