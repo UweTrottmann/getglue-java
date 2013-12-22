@@ -31,6 +31,8 @@ import org.apache.oltu.oauth2.common.message.types.ResponseType;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import retrofit.client.Client;
+import retrofit.client.OkClient;
 
 public class GetGlue {
 
@@ -104,6 +106,8 @@ public class GetGlue {
         RestAdapter.Builder builder = new RestAdapter.Builder()
                 .setServer(API_URL);
 
+        builder.setClient(new OkClient(Utils.createOkHttpClient()));
+
         // Supply OAuth 2.0 access token
         builder.setRequestInterceptor(new RequestInterceptor() {
             @Override
@@ -122,6 +126,8 @@ public class GetGlue {
     private RestAdapter buildRestAdapterApiFour() {
         RestAdapter.Builder builder = new RestAdapter.Builder()
                 .setServer(API_V4_URL);
+
+        builder.setClient(new OkClient(Utils.createOkHttpClient()));
 
         if (mIsDebug) {
             builder.setLogLevel(RestAdapter.LogLevel.FULL);
