@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 1.2.2 *(2014-02-22)*
+--------------------------------
+
+ * Do not crash if there isn't an error response for HTTP 400 and 401 responses when getting the access token.
+ * Use okhttp 1.3.0.
+ * Use retrofit 1.4.1.
+
 Version 1.2.1 *(2013-12-22)*
 --------------------------------
 
