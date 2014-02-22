@@ -11,7 +11,7 @@ Dependencies
 
 The library has some dependencies, add these as you see fit. For example for Gradle:
 ```
-compile 'com.squareup.okhttp:okhttp:1.2.1'
+compile 'com.squareup.okhttp:okhttp:1.3.0'
 compile 'com.squareup.retrofit:retrofit:1.3.0'
 compile 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:0.31'
 ```
@@ -21,7 +21,7 @@ Or for Maven:
 <dependency>
   <groupId>com.squareup.okhttp</groupId>
   <artifactId>okhttp</artifactId>
-  <version>1.2.1</version>
+  <version>1.3.0</version>
 </dependency>
 <dependency>
   <groupId>com.squareup.retrofit</groupId>
