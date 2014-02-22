@@ -104,7 +104,7 @@ public class GetGlue {
 
     private RestAdapter buildRestAdapter() {
         RestAdapter.Builder builder = new RestAdapter.Builder()
-                .setServer(API_URL);
+                .setEndpoint(API_URL);
 
         builder.setClient(new OkClient(Utils.createOkHttpClient()));
 
@@ -125,7 +125,7 @@ public class GetGlue {
 
     private RestAdapter buildRestAdapterApiFour() {
         RestAdapter.Builder builder = new RestAdapter.Builder()
-                .setServer(API_V4_URL);
+                .setEndpoint(API_V4_URL);
 
         builder.setClient(new OkClient(Utils.createOkHttpClient()));
 
