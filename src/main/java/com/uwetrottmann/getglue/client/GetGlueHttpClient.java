@@ -18,7 +18,6 @@ package com.uwetrottmann.getglue.client;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.uwetrottmann.getglue.Utils;
-
 import org.apache.oltu.oauth2.client.HttpClient;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.client.response.OAuthClientResponse;
@@ -38,22 +37,17 @@ import java.util.Map;
 /**
  * Using a custom {@link org.apache.oltu.oauth2.client.HttpClient} implementation which can follow
  * protocol redirects, as GetGlue redirects from https to http once the grant code was accepted.
+ * Based of {@link org.apache.oltu.oauth2.client.URLConnectionClient}.
  */
 public class GetGlueHttpClient implements HttpClient {
 
     @Override
-    public <T extends OAuthClientResponse> T execute(OAuthClientRequest request,
-            Map<String, String> headers, String requestMethod, Class<T> responseClass)
-            throws OAuthSystemException, OAuthProblemException {
-        String responseBody = null;
-        HttpURLConnection connection = null;
-        int responseCode = 0;
+    public <T extends OAuthClientResponse> T execute(OAuthClientRequest request, Map<String, String> headers,
+            String requestMethod, Class<T> responseClass) throws OAuthSystemException, OAuthProblemException {
+        OkHttpClient client = Utils.createOkHttpClient();
 
         try {
-            OkHttpClient client = Utils.createOkHttpClient();
-            connection = client.open(new URL(request.getLocationUri()));
-
-            responseCode = -1;
+            HttpURLConnection connection = client.open(new URL(request.getLocationUri()));
 
             if (headers != null && !headers.isEmpty()) {
                 for (Map.Entry<String, String> header : headers.entrySet()) {
@@ -84,22 +78,27 @@ public class GetGlueHttpClient implements HttpClient {
             connection.connect();
 
             InputStream inputStream;
-            responseCode = connection.getResponseCode();
+            int responseCode = connection.getResponseCode();
             if (responseCode == 400 || responseCode == 401) {
                 inputStream = connection.getErrorStream();
             } else {
                 inputStream = connection.getInputStream();
             }
 
-            responseBody = OAuthUtils.saveStreamAsString(inputStream);
+            String body = null;
+            if (inputStream != null) {
+                body = OAuthUtils.saveStreamAsString(inputStream);
+            }
+
+            if (body != null) {
+                return OAuthClientResponseFactory
+                        .createCustomResponse(body, connection.getContentType(), responseCode, responseClass);
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new OAuthSystemException(e);
         }
 
-        return OAuthClientResponseFactory
-                .createCustomResponse(responseBody,
-                        connection.getContentType(),
-                        responseCode, responseClass);
+        return null;
     }
 
     /**
