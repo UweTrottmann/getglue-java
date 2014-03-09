@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.2.3 *(2014-03-09)*
+--------------------------------
+
+ * Use okhttp 1.5.0 which uses a private SSL context (so we don't have to set one on our own).
+
 Version 1.2.2 *(2014-02-22)*
 --------------------------------
 
