@@ -5,6 +5,19 @@ A Java wrapper around the [v3 API of GetGlue][1] using retrofit.
 
 Usage
 =====
+Add the following dependency to your Gradle project:
+```
+compile 'com.uwetrottmann:getglue-java:1.3.0'
+```
+
+or your Maven project:
+```
+<dependency>
+    <groupId>com.uwetrottmann</groupId>
+    <artifactId>getglue-java</artifactId>
+    <version>1.3.0</version>
+</dependency>
+```
 
 Dependencies
 ------------
@@ -87,7 +100,7 @@ This can fail, in which case you have to ask the user to authenticate again (see
 License
 =======
 
-    Copyright 2013 Uwe Trottmann
+    Copyright 2013-2014 Uwe Trottmann
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
