@@ -22,7 +22,8 @@ or your Maven project:
 Dependencies
 ------------
 
-The library has some dependencies, add these as you see fit. For example for Gradle:
+If you rather use the [released jar][3], add dependencies yourself as you see fit.
+For example for Gradle:
 ```
 compile 'com.squareup.okhttp:okhttp:1.5.2'
 compile 'com.squareup.retrofit:retrofit:1.4.1'
@@ -118,3 +119,4 @@ License
 
  [1]: http://developer.getglue.com
  [2]: https://api.getglue.com/oauth2/
+ [3]: https://github.com/UweTrottmann/getglue-java/releases
