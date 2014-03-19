@@ -1,7 +1,7 @@
 getglue-java
 ============
 
-A Java wrapper around the [v3 API of GetGlue][1] using retrofit.
+A Java wrapper around the [v3 API of tvtag (formerly GetGlue)][1] using retrofit.
 
 Usage
 =====
