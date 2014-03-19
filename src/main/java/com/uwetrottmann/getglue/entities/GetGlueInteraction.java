@@ -13,4 +13,6 @@ public class GetGlueInteraction {
     @SerializedName("object")
     public GetGlueObject _object;
 
+    public String comment;
+
 }
