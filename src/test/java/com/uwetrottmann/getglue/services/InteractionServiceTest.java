@@ -21,6 +21,7 @@ public class InteractionServiceTest extends BaseTestCase {
         assertThat(resource.interaction._object).isNotNull();
         assertThat(resource.interaction._object.id).isEqualTo("tv_shows/how_i_met_your_mother");
         assertThat(resource.interaction._object.title).isEqualTo("How I Met Your Mother");
+        assertThat(resource.interaction.comment).isEqualTo("Testing getglue-java.");
     }
 
     public void test_votes() {

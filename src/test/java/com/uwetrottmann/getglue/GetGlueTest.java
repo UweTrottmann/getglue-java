@@ -12,7 +12,8 @@ public class GetGlueTest extends BaseTestCase {
         System.out.println("GetGlue Authorization URL: " + request.getLocationUri());
         assertThat(request.getLocationUri())
                 .isEqualTo("https://api.getglue.com/oauth2/authorize"
-                        + "?response_type=code&scope=public+read+write"
+                        + "?scope=public+read+write"
+                        + "&response_type=code"
                         + "&redirect_uri=http%3A%2F%2Flocalhost"
                         + "&client_id=" + CLIENT_ID);
     }
@@ -24,10 +25,10 @@ public class GetGlueTest extends BaseTestCase {
         System.out.println("GetGlue Access Token URL: " + request.getLocationUri());
         assertThat(request.getLocationUri())
                 .isEqualTo("https://api.getglue.com/oauth2/access_token"
-                        + "?client_secret=" + CLIENT_SECRET
+                        + "?code=" + code
                         + "&grant_type=authorization_code"
+                        + "&client_secret=" + CLIENT_SECRET
                         + "&redirect_uri=http%3A%2F%2Flocalhost"
-                        + "&code=" + code
                         + "&client_id=" + CLIENT_ID);
     }
 
