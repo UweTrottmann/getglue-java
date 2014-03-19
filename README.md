@@ -5,13 +5,26 @@ A Java wrapper around the [v3 API of GetGlue][1] using retrofit.
 
 Usage
 =====
+Add the following dependency to your Gradle project:
+```
+compile 'com.uwetrottmann:getglue-java:1.3.0'
+```
+
+or your Maven project:
+```
+<dependency>
+    <groupId>com.uwetrottmann</groupId>
+    <artifactId>getglue-java</artifactId>
+    <version>1.3.0</version>
+</dependency>
+```
 
 Dependencies
 ------------
 
 The library has some dependencies, add these as you see fit. For example for Gradle:
 ```
-compile 'com.squareup.okhttp:okhttp:1.5.0'
+compile 'com.squareup.okhttp:okhttp:1.5.2'
 compile 'com.squareup.retrofit:retrofit:1.4.1'
 compile 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:0.31'
 ```
@@ -21,7 +34,7 @@ Or for Maven:
 <dependency>
   <groupId>com.squareup.okhttp</groupId>
   <artifactId>okhttp</artifactId>
-  <version>1.5.0</version>
+  <version>1.5.2</version>
 </dependency>
 <dependency>
   <groupId>com.squareup.retrofit</groupId>
@@ -87,7 +100,7 @@ This can fail, in which case you have to ask the user to authenticate again (see
 License
 =======
 
-    Copyright 2013 Uwe Trottmann
+    Copyright 2013-2014 Uwe Trottmann
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

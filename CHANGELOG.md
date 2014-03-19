@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.3.0 *(2014-03-19)*
+--------------------------------
+
+ * Add `comment` field to `GetGlueInteraction`. This holds e.g. check-in comments, might be null.
+ * Use okhttp 1.5.2.
+
 Version 1.2.3 *(2014-03-09)*
 --------------------------------
 
