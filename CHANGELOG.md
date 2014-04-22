@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 1.3.1 *(2014-03-22)*
+--------------------------------
+
+ * Update to okhttp 1.5.4.
+ * Update to retrofit 1.5.0.
+ * Update to Apache Oltu OAuth 2.0 Client 1.0.0.
+
 Version 1.3.0 *(2014-03-19)*
 --------------------------------
 

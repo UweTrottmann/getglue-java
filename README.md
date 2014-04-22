@@ -7,7 +7,7 @@ Usage
 =====
 Add the following dependency to your Gradle project:
 ```
-compile 'com.uwetrottmann:getglue-java:1.3.0'
+compile 'com.uwetrottmann:getglue-java:1.3.1'
 ```
 
 or your Maven project:
@@ -15,19 +15,19 @@ or your Maven project:
 <dependency>
     <groupId>com.uwetrottmann</groupId>
     <artifactId>getglue-java</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 
 Dependencies
 ------------
 
-If you rather use the [released jar][3], add dependencies yourself as you see fit.
+If you'd rather like to use the [released jar][3], add dependencies yourself as you see fit.
 For example for Gradle:
 ```
-compile 'com.squareup.okhttp:okhttp:1.5.2'
-compile 'com.squareup.retrofit:retrofit:1.4.1'
-compile 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:0.31'
+compile 'com.squareup.okhttp:okhttp:1.5.4'
+compile 'com.squareup.retrofit:retrofit:1.5.0'
+compile 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:1.0.0'
 ```
 
 Or for Maven:
@@ -35,17 +35,17 @@ Or for Maven:
 <dependency>
   <groupId>com.squareup.okhttp</groupId>
   <artifactId>okhttp</artifactId>
-  <version>1.5.2</version>
+  <version>1.5.4</version>
 </dependency>
 <dependency>
   <groupId>com.squareup.retrofit</groupId>
   <artifactId>retrofit</artifactId>
-  <version>1.4.1</version>
+  <version>1.5.0</version>
 </dependency>
 <dependency>
     <groupId>org.apache.oltu.oauth2</groupId>
     <artifactId>org.apache.oltu.oauth2.client</artifactId>
-    <version>0.31</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
