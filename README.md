@@ -7,7 +7,7 @@ Usage
 =====
 Add the following dependency to your Gradle project:
 ```
-compile 'com.uwetrottmann:getglue-java:1.3.0'
+compile 'com.uwetrottmann:getglue-java:1.3.1'
 ```
 
 or your Maven project:
@@ -15,7 +15,7 @@ or your Maven project:
 <dependency>
     <groupId>com.uwetrottmann</groupId>
     <artifactId>getglue-java</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 
