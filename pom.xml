@@ -12,7 +12,7 @@
 
     <groupId>com.uwetrottmann</groupId>
     <artifactId>getglue-java</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
     <packaging>jar</packaging>
 
     <name>GetGlue Java API Wrapper</name>
@@ -47,17 +47,17 @@
         <dependency>
             <groupId>com.squareup.okhttp</groupId>
             <artifactId>okhttp</artifactId>
-            <version>1.5.2</version>
+            <version>1.5.4</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit</groupId>
             <artifactId>retrofit</artifactId>
-            <version>1.4.1</version>
+            <version>1.5.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.oltu.oauth2</groupId>
             <artifactId>org.apache.oltu.oauth2.client</artifactId>
-            <version>0.31</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>

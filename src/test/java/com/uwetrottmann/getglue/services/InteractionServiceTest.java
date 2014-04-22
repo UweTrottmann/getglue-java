@@ -11,7 +11,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 public class InteractionServiceTest extends BaseTestCase {
 
 
-    public static final String SAMPLE_INTERACTION = "getgluejava/2013-10-24T18:30:38Z";
+    public static final String SAMPLE_INTERACTION = "getgluejava/2014-04-22T17:08:08Z";
 
     public void test_get() {
         InteractionService service = getManager().interactionService();
