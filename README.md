@@ -22,7 +22,7 @@ or your Maven project:
 Dependencies
 ------------
 
-If you rather use the [released jar][3], add dependencies yourself as you see fit.
+If you'd rather like to use the [released jar][3], add dependencies yourself as you see fit.
 For example for Gradle:
 ```
 compile 'com.squareup.okhttp:okhttp:1.5.4'
