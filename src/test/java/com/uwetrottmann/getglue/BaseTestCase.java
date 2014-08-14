@@ -10,7 +10,7 @@ public abstract class BaseTestCase extends TestCase {
 
     protected static final String CLIENT_ID = "7FD930E5C9D030F696ACA631343EB3";
     protected static final String CLIENT_SECRET = "EB4B93F673B95A5A2460CF983BB0A4";
-    private static final String TEMPORARY_ACCESS_TOKEN = "CF604DD9FB0FE147C0CD589C4F0B95";  /* Expires June 21, 2014, 1:13 p.m. */
+    private static final String TEMPORARY_ACCESS_TOKEN = "A86016336417D76D9B632EBB894394";  /* Expires Oct. 13, 2014, 2:32 a.m. */
     protected static final String REDIRECT_URI = "http://localhost";
     private final GetGlue mManager = new GetGlue();
 
