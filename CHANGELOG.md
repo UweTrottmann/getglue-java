@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+Version 1.4.0 *(2014-08-14)*
+--------------------------------
+
+ * Easier customization of `RestAdapter`: set your own HTTP client or executor by overriding `newRestAdapterBuilder()`.
+ * Require `okhttp-urlconnecton`.
+ * Update `okhttp` to 2.0.0 (1.6.0 required at least).
+ * Update `retrofit` to 1.6.1.
+
 Version 1.3.1 *(2014-03-22)*
 --------------------------------
 
