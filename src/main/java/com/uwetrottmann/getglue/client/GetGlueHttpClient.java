@@ -17,6 +17,7 @@
 package com.uwetrottmann.getglue.client;
 
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.OkUrlFactory;
 import com.uwetrottmann.getglue.Utils;
 import org.apache.oltu.oauth2.client.HttpClient;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
@@ -47,7 +48,7 @@ public class GetGlueHttpClient implements HttpClient {
         OkHttpClient client = Utils.createOkHttpClient();
 
         try {
-            HttpURLConnection connection = client.open(new URL(request.getLocationUri()));
+            HttpURLConnection connection = new OkUrlFactory(client).open(new URL(request.getLocationUri()));
 
             if (headers != null && !headers.isEmpty()) {
                 for (Map.Entry<String, String> header : headers.entrySet()) {
