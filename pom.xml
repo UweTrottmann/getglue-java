@@ -15,7 +15,7 @@
     <version>1.4.0</version>
     <packaging>jar</packaging>
 
-    <name>GetGlue Java API Wrapper</name>
+    <name>tvtag Java API Wrapper</name>
     <description>A Java wrapper around the v3 API of tvtag (formerly GetGlue) using retrofit.</description>
     <url>https://github.com/UweTrottmann/getglue-java</url>
     <inceptionYear>2013</inceptionYear>
