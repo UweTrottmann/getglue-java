@@ -8,13 +8,13 @@ Usage
 
 Add the following dependency to your Gradle project:
 
-```
+```groovy
 compile 'com.uwetrottmann:getglue-java:1.4.0'
 ```
 
 or your Maven project:
 
-```
+```xml
 <dependency>
     <groupId>com.uwetrottmann</groupId>
     <artifactId>getglue-java</artifactId>
@@ -28,7 +28,7 @@ Dependencies
 If you'd rather like to use the [released jar][3], add dependencies yourself as you see fit.
 For example for Gradle:
 
-```
+```groovy
 compile 'com.squareup.okhttp:okhttp:2.0.0'
 compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
 compile 'com.squareup.retrofit:retrofit:1.6.1'
@@ -37,7 +37,7 @@ compile 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:1.0.0'
 
 Or for Maven:
 
-```
+```xml
 <dependency>
   <groupId>com.squareup.okhttp</groupId>
   <artifactId>okhttp</artifactId>
@@ -65,7 +65,7 @@ Calling an endpoint
 
 Once you have an access token you can make API calls by using the respective service:
 
-```
+```java
 // You can keep these around
 GetGlue getglue = new GetGlue();
 getglue.setAccessToken(<access-token>);
@@ -82,7 +82,7 @@ GetGlue uses OAuth 2.0 to authenticate the apps that use their API.
 First, register your app at the [GetGlue OAuth portal][2] to obtain an OAuth client id and client secret.
 Before using the API the user has to authorize your app so you can get a valid access token.
 
-```
+```java
 OAuthClientRequest request = GetGlue.getAuthorizationRequest(OAUTH_CLIENT_ID, OAUTH_CALLBACK_URL);
 
 // Load authUrl in a web browser, so the user can sign in and authorize your app.
@@ -95,7 +95,7 @@ String authUrl = request.getLocationUri();
 
 This auth code can be used once to exchange it for an OAuth access and refresh token.
 
-```
+```java
 OAuthAccessTokenResponse response = GetGlue.getAccessTokenResponse(
                         OAUTH_CLIENT_ID,
                         OAUTH_CLIENT_SECRET,
