@@ -1,6 +1,8 @@
 getglue-java
 ============
 
+**DEPRECATED tvtag out of service since end of 2014**
+
 A Java wrapper around the [v3 API of tvtag (formerly GetGlue)][1] using retrofit.
 
 Usage
